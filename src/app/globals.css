@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+:root {
+  /* --cream: #FFFBDE; */
+  --sky: #91C8E4;
+  --blue-soft: #749BC2;
+  --blue-dark: #4682A9;
+}
+
+
+@theme inline {
+  /* --color-cream: var(--cream); */
+  --color-sky: var(--sky);
+  --color-blue-soft: var(--blue-soft);
+  --color-blue-dark: var(--blue-dark);
+  --font-sans: var(--font-poppins);
+}
+
+body {
+  /* @apply min-h-screen antialiased; */
+  background-color: var(--cream);
+  color: #1e293b;
+  font-family: var(--font-poppins), sans-serif;
+  scroll-behavior: smooth;
+  margin: 0; padding: 0;
+  overflow-x: hidden;
+}
+
+a {
+  @apply transition-all duration-300;
+}
+
+section {
+  @apply py-20;
+}
+/* Smooth horizontal floating for top cloud */
+@keyframes cloudMoveTop {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(50px); }
+}
+
+/* Smooth horizontal floating for bottom cloud */
+@keyframes cloudMoveBottom {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50px); } /* Moves left 50px and back */
+}
+
+/* Top cloud - gentle oscillation */
+.animate-cloud-top {
+  animation: cloudMoveTop 6s ease-in-out infinite alternate;
+}
+
+/* Bottom cloud - gentle oscillation like top cloud */
+.animate-cloud-bottom {
+  animation: cloudMoveBottom 4s ease-in-out infinite alternate; /* slower for variation */
+}
+
+
+.fancy-heading {
+  font-family: 'Pacifico', cursive;
+  letter-spacing: 2px;
+}
+
