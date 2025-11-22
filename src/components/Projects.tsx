@@ -2,6 +2,10 @@
 import React, { useState } from "react";
 import { FaExternalLinkAlt, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
+// Swiper imports
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+
 const projects = [
   {
     title: "Chatbot College Info Portal",
@@ -40,13 +44,9 @@ const projects = [
 export default function Projects() {
   const [index, setIndex] = useState(0);
 
-  const nextSlide = () => {
-    setIndex((prev) => (prev + 1) % projects.length);
-  };
-
-  const prevSlide = () => {
+  const nextSlide = () => setIndex((prev) => (prev + 1) % projects.length);
+  const prevSlide = () =>
     setIndex((prev) => (prev - 1 + projects.length) % projects.length);
-  };
 
   const getVisibleCards = () => [
     projects[index],
@@ -57,67 +57,93 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="relative w-full py-24 px-6 bg-gradient-to-b from-[#91C8E4] via-[#FFFBDE]/60 to-[#91C8E4]/30 overflow-hidden"
+      className="relative w-full py-24 px-6 bg-gradient-to-b from-[#91C8E4] via-[#FFFBDE]/60 to-[#91C8E4]/30"
     >
-      <h2 className="text-5xl font-extrabold text-center text-[#4682A9] mb-16" data-aos="fade-up">
-         Featured Projects
+      <h2 className="text-4xl sm:text-5xl font-extrabold text-center text-[#4682A9] mb-16">
+        Featured Projects
       </h2>
 
-      {/* Carousel Wrapper */}
-      <div className="relative max-w-7xl mx-auto flex items-center" data-aos="fade-up">
+      <div className="relative max-w-7xl mx-auto flex items-center">
 
-        {/* LEFT ARROW */}
+        {/* LEFT BUTTON – desktop only */}
         <button
           onClick={prevSlide}
           className="absolute -left-12 z-20 p-4 bg-[#4682A9] hover:bg-[#749BC2] text-white rounded-full shadow-xl hidden md:flex"
-        data-aos="fade-left" >
+        >
           <FaChevronLeft size={22} />
         </button>
 
-        {/* 3 Project Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 mx-auto w-full px-12" data-aos="fade-up">
-          {getVisibleCards().map((project, index) => (
+        {/* ---------------------- MOBILE VIEW (SWIPER) ---------------------- */}
+        <div className="block md:hidden w-full">
+          <Swiper
+            direction="horizontal"
+            spaceBetween={20}
+            slidesPerView={1}
+            centeredSlides={true}
+            style={{ overflow: "visible" }}
+          >
+            {projects.map((p, idx) => (
+              <SwiperSlide key={idx}>
+                <div className="relative group bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl overflow-hidden shadow-lg mx-6">
+                  <div className="relative h-56">
+                    <img
+                      src={p.image}
+                      alt={p.title}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#4682A9]/70" />
+                    <h3 className="absolute bottom-4 left-5 text-2xl font-semibold text-white">
+                      {p.title}
+                    </h3>
+                  </div>
+
+                  <div className="p-6">
+                    <p className="text-[#2c3e50] text-sm leading-relaxed mb-5">
+                      {p.description}
+                    </p>
+
+                    <a
+                      href={p.link}
+                      target="_blank"
+                      className="inline-flex items-center gap-2 px-5 py-2 text-sm font-semibold text-white bg-[#4682A9] rounded-full shadow-md hover:bg-[#749BC2]"
+                    >
+                      View Project <FaExternalLinkAlt size={14} />
+                    </a>
+                  </div>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+
+        {/* ---------------------- DESKTOP VIEW (3 CARDS) ---------------------- */}
+        <div className="hidden md:grid grid-cols-3 gap-12 w-full px-12">
+          {getVisibleCards().map((project, idx) => (
             <div
-              key={index}
-              className="relative group bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl overflow-hidden shadow-[0_0_25px_rgba(70,130,169,0.3)] transition-transform duration-500 hover:-translate-y-3 hover:shadow-[0_0_45px_rgba(70,130,169,0.5)]"
-            data-aos="fade-up">
-              {/* Image */}
-              <div className="relative h-56 overflow-hidden" data-aos="fade-up">
+              key={idx}
+              className="relative group bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl overflow-hidden shadow-lg transition-transform duration-500 hover:-translate-y-3"
+            >
+              <div className="relative h-56">
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  data-aos="fade-up"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#4682A9]/70 via-transparent to-transparent opacity-80" />
-                <h3 className="absolute bottom-4 left-5 text-2xl font-semibold text-white drop-shadow-lg" data-aos="fade-up">
+                <div className="absolute inset-0 bg-gradient-to-t from-[#4682A9]/70" />
+                <h3 className="absolute bottom-4 left-5 text-2xl font-semibold text-white">
                   {project.title}
                 </h3>
               </div>
 
-              {/* Content */}
               <div className="p-6">
-                <p className="text-[#2c3e50] text-sm font-medium leading-relaxed mb-5"data-aos="fade-up">
+                <p className="text-[#2c3e50] text-sm leading-relaxed mb-5">
                   {project.description}
                 </p>
-
-                <div className="flex flex-wrap gap-2 mb-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500"data-aos="fade-up">
-                  {project.tech.map((tech, i) => (
-                    <span
-                      key={i}
-                      className="px-3 py-1 text-xs font-semibold text-[#4682A9] bg-[#FFFBDE]/70 rounded-full border border-[#91C8E4]/50 shadow-sm"
-                      data-aos="fade-up"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
 
                 <a
                   href={project.link}
                   target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-2 text-sm font-semibold text-white bg-[#4682A9] rounded-full shadow-lg hover:bg-[#749BC2] transition-all"
+                  className="inline-flex items-center gap-2 px-5 py-2 text-sm font-semibold text-white bg-[#4682A9] rounded-full shadow-md hover:bg-[#749BC2]"
                 >
                   View Project <FaExternalLinkAlt size={14} />
                 </a>
@@ -126,10 +152,10 @@ export default function Projects() {
           ))}
         </div>
 
-        {/* RIGHT ARROW */}
+        {/* RIGHT BUTTON – desktop only */}
         <button
           onClick={nextSlide}
-          className="absolute -right-12 z-20 p-4 bg-[#4682A9] hover:bg-[#749BC2] text-white rounded-full shadow-xl hidden md:flex" data-aos="fade-right"
+          className="absolute -right-12 z-20 p-4 bg-[#4682A9] hover:bg-[#749BC2] text-white rounded-full shadow-xl hidden md:flex"
         >
           <FaChevronRight size={22} />
         </button>
