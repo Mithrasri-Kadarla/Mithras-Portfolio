@@ -106,7 +106,7 @@ export default function Home() {
 
             {/* 📄 Resume Button */}
             <a
-                href="https://drive.google.com/file/d/1crZb_P8StvnGaI160Kwzp4mXFwDLADwe/view?usp=sharing"
+                href="https://drive.google.com/file/d/1Zoyp9zBFcfCMPk_N_rpnV0mSkF6v0bAO/view?usp=drive_link"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-8 py-3 bg-[#4682A9] text-[#FFFBDE] font-semibold rounded-full shadow-md hover:bg-[#749BC2] hover:shadow-lg transition-all duration-300 relative z-10"

@@ -30,8 +30,9 @@ export default function Page() {
       <div id="projects">
         <Projects />
       </div>
-
+    <div id="contact">
       <Footer />
+      </div>
     </>
   );
 }
