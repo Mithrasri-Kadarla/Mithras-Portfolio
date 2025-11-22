@@ -11,9 +11,10 @@ export default function Page() {
     <>
       <Navbar />
 
-      <div id="home">
+      <div id="home" className="pt-[60px]">
         <Home />
       </div>
+
 
       <div id="about">
         <AboutMe />
@@ -30,8 +31,8 @@ export default function Page() {
       <div id="projects">
         <Projects />
       </div>
-    <div id="contact">
-      <Footer />
+      <div id="contact">
+        <Footer />
       </div>
     </>
   );
