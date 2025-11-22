@@ -26,10 +26,22 @@ import {
   SiPandas,
 } from "react-icons/si";
 
-export default function Skills() {
-  const [selectedCategory, setSelectedCategory] = useState("programming");
+// ⭐ FIX 1: Define a proper type for category keys
+type CategoryKey = "programming" | "fullstack" | "ml" | "tools" | "softskills";
 
-  const categories = {
+export default function Skills() {
+  // ⭐ FIX 2: Add type to state
+  const [selectedCategory, setSelectedCategory] =
+    useState<CategoryKey>("programming");
+
+  // ⭐ FIX 3: Typed categories with Record
+  const categories: Record<
+    CategoryKey,
+    {
+      title: string;
+      items: { name: string; icon: JSX.Element }[];
+    }
+  > = {
     programming: {
       title: "Programming Languages",
       items: [
@@ -38,6 +50,7 @@ export default function Skills() {
         { name: "C", icon: <SiC className="text-[#00599C]" /> },
       ],
     },
+
     fullstack: {
       title: "Full-Stack Development",
       items: [
@@ -47,16 +60,21 @@ export default function Skills() {
         { name: "CSS", icon: <FaCss3Alt className="text-[#1572B6]" /> },
       ],
     },
+
     ml: {
       title: "ML & Data Analytics",
       items: [
-        { name: "Scikit-learn", icon: <SiScikitlearn className="text-[#F7931E]" /> },
+        {
+          name: "Scikit-learn",
+          icon: <SiScikitlearn className="text-[#F7931E]" />,
+        },
         { name: "Pandas", icon: <SiPandas className="text-[#150458]" /> },
         { name: "NumPy", icon: <SiNumpy className="text-[#013243]" /> },
         { name: "SQL", icon: <SiMysql className="text-[#00758F]" /> },
         { name: "Power BI", icon: <FaChartLine className="text-[#F2C811]" /> },
       ],
     },
+
     tools: {
       title: "API & Tools",
       items: [
@@ -68,20 +86,28 @@ export default function Skills() {
         { name: "Vercel", icon: <SiVercel className="text-black" /> },
       ],
     },
+
     softskills: {
       title: "Soft Skills",
       items: [
-        { name: "Rapid Prototyping", icon: <FaReact className="text-[#61DAFB]" /> },
+        {
+          name: "Rapid Prototyping",
+          icon: <FaReact className="text-[#61DAFB]" />,
+        },
         { name: "Debugging", icon: <FaBug className="text-[#E34F26]" /> },
         { name: "Collaboration", icon: <FaUsers className="text-[#4682A9]" /> },
-        { name: "Time Management", icon: <FaClock className="text-[#91C8E4]" /> },
+        {
+          name: "Time Management",
+          icon: <FaClock className="text-[#91C8E4]" />,
+        },
       ],
     },
   };
 
-  const categoryKeys = Object.keys(categories);
+  // ⭐ FIX 4: `categoryKeys` is typed automatically
+  const categoryKeys = Object.keys(categories) as CategoryKey[];
 
-  // 🔄 Auto rotate categories every 5 seconds (ALWAYS active)
+  // Auto Rotate Category Every 5 Seconds
   useEffect(() => {
     const interval = setInterval(() => {
       setSelectedCategory((prev) => {
@@ -92,7 +118,7 @@ export default function Skills() {
     }, 5000);
 
     return () => clearInterval(interval);
-  }, []); // no dependency → keeps rotating forever
+  }, []);
 
   return (
     <section
@@ -105,13 +131,12 @@ export default function Skills() {
       </h2>
 
       <div className="flex flex-col md:flex-row bg-white/20 backdrop-blur-md rounded-3xl shadow-lg overflow-hidden w-full max-w-6xl border border-white/30">
-        
         {/* 🧭 Left: Category List */}
         <div className="w-full md:w-1/3 bg-[#4682A9]/80 p-8 flex flex-col gap-6 text-white">
           {categoryKeys.map((key) => (
             <button
               key={key}
-              onClick={() => setSelectedCategory(key)} // no stopping of auto-rotate
+              onClick={() => setSelectedCategory(key)}
               className={`text-left text-lg font-semibold py-3 px-4 rounded-xl transition-all duration-300 ${
                 selectedCategory === key
                   ? "bg-white text-[#4682A9] shadow-md"
@@ -137,7 +162,6 @@ export default function Skills() {
             </div>
           ))}
         </div>
-
       </div>
     </section>
   );
