@@ -57,9 +57,9 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="relative w-full py-24 px-6 bg-gradient-to-b from-[#91C8E4] via-[#FFFBDE]/60 to-[#91C8E4]/30"
+      className="relative w-full py-24 px-6 bg-gradient-to-b from-[#91C8E4] via-[#FFFBDE]/60 to-[#91C8E4]/30" data-aos="fade-up"
     >
-      <h2 className="text-4xl sm:text-5xl font-extrabold text-center text-[#4682A9] mb-16">
+      <h2 className="text-4xl sm:text-5xl font-extrabold text-center text-[#4682A9] mb-16" data-aos="fade-up">
         Featured Projects
       </h2>
 
@@ -84,7 +84,7 @@ export default function Projects() {
           >
             {projects.map((p, idx) => (
               <SwiperSlide key={idx}>
-                <div className="relative group bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl overflow-hidden shadow-lg mx-6">
+                <div className="relative group bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl overflow-hidden shadow-lg mx-6" data-aos="fade-up">
                   <div className="relative h-56">
                     <img
                       src={p.image}
@@ -106,7 +106,7 @@ export default function Projects() {
                       href={p.link}
                       target="_blank"
                       className="inline-flex items-center gap-2 px-5 py-2 text-sm font-semibold text-white bg-[#4682A9] rounded-full shadow-md hover:bg-[#749BC2]"
-                    >
+                    data-aos="fade-up">
                       View Project <FaExternalLinkAlt size={14} />
                     </a>
                   </div>
