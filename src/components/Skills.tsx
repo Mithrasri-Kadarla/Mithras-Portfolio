@@ -39,7 +39,8 @@ export default function Skills() {
     CategoryKey,
     {
       title: string;
-      items: { name: string; icon: JSX.Element }[];
+      items: { name: string; icon: React.ReactNode }[];
+
     }
   > = {
     programming: {
