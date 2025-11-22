@@ -55,6 +55,11 @@ section {
   animation: cloudMoveBottom 4s ease-in-out infinite alternate; /* slower for variation */
 }
 
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
 
 .fancy-heading {
   font-family: 'Pacifico', cursive;
