@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import { Poppins, Playfair_Display,Geist, Geist_Mono } from "next/font/google";
+import { Poppins, Playfair_Display,Geist, Geist_Mono,Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "../components/Navbar";
 import Animate from "@/components/sharedcomponents/Aos/Animate";
-
 // Font setup
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,6 +34,7 @@ const outfit = Playfair_Display({
   subsets: ["latin"],
   variable: "--font-outfit",
 });
+
 export const metadata: Metadata = {
   title: "Mithra | Portfolio",
   description: "A creative portfolio built with elegant tones and Poppins font.",

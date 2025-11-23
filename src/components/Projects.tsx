@@ -63,7 +63,7 @@ export default function Projects() {
         Featured Projects
       </h2>
 
-      <div className="relative max-w-7xl mx-auto flex items-center">
+      <div className="relative max-w-7xl mx-auto flex items-center" data-aos="fade-up">
 
         {/* LEFT BUTTON – desktop only */}
         <button
@@ -74,7 +74,7 @@ export default function Projects() {
         </button>
 
         {/* ---------------------- MOBILE VIEW (SWIPER) ---------------------- */}
-        <div className="block md:hidden w-full">
+        <div className="block md:hidden w-full" data-aos="fade-up">
           <Swiper
             direction="horizontal"
             spaceBetween={20}
@@ -85,14 +85,14 @@ export default function Projects() {
             {projects.map((p, idx) => (
               <SwiperSlide key={idx}>
                 <div className="relative group bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl overflow-hidden shadow-lg mx-6" data-aos="fade-up">
-                  <div className="relative h-56">
+                  <div className="relative h-56" data-aos="fade-up">
                     <img
                       src={p.image}
                       alt={p.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-aos="fade-up"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#4682A9]/70" />
-                    <h3 className="absolute bottom-4 left-5 text-2xl font-semibold text-white">
+                    <h3 className="absolute bottom-4 left-5 text-2xl font-semibold text-white" >
                       {p.title}
                     </h3>
                   </div>

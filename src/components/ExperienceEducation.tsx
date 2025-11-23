@@ -18,22 +18,24 @@ export default function ExperienceEducationPath() {
       <div className="relative w-full max-w-4xl">
 
         {/* Timeline Line */}
-        <div className="
-          absolute 
-          left-6 sm:left-1/2
-          transform sm:-translate-x-1/2
-          w-1 h-full 
-          bg-gradient-to-b from-[#4682A9] to-[#F9A826] 
-          rounded-full
-        "></div>
+        <div
+          className="
+            absolute 
+            left-6 sm:left-1/2
+            transform sm:-translate-x-1/2
+            w-1 h-full 
+            bg-gradient-to-b from-[#4682A9] to-[#F9A826] 
+            rounded-full
+          "
+        />
 
         <div className="space-y-16">
 
           {/* EXPERIENCE NODE */}
           <div className="relative flex flex-col sm:flex-row sm:justify-start">
             
-            {/* Content */}
-            <div className="w-full sm:w-1/2 sm:pr-8 text-left sm:text-right sm:ml-0 ml-12">
+            {/* Content: use padding-left on mobile so it lines up with the timeline */}
+            <div className="w-full sm:w-1/2 sm:pr-8 text-left sm:text-right pl-16 sm:pl-0">
               <h3 className="text-xl sm:text-2xl font-semibold text-[#4682A9] flex items-center sm:justify-end gap-2">
                 <Briefcase className="text-[#4682A9]" /> Experience
               </h3>
@@ -58,25 +60,27 @@ export default function ExperienceEducationPath() {
               </ul>
             </div>
 
-            {/* Node Dot */}
+            {/* Node Dot - positioned to match the timeline line (left-6 on mobile, centered on sm+) */}
             <div
-              className="
-                absolute 
-                left-6 sm:left-1/2 
-                transform sm:-translate-x-1/2 
-                bg-[#4682A9] 
-                w-5 h-5 sm:w-6 sm:h-6 
-                rounded-full border-4 border-white shadow-lg
-              "
-              data-aos="fade-up"
-            ></div>
+  className="
+    absolute 
+    left-6 sm:left-1/2 
+    sm:-translate-x-1/2 
+    bg-[#4682A9] 
+    w-5 h-5 sm:w-6 sm:h-6 
+    rounded-full border-4 border-white shadow-lg
+    hidden sm:flex
+  "
+  data-aos="fade-up"
+/>
+
           </div>
 
           {/* EDUCATION NODE */}
           <div className="relative flex flex-col sm:flex-row sm:justify-end">
             
-            {/* Content */}
-            <div className="w-full sm:w-1/2 sm:pl-8 text-left ml-12 sm:ml-0">
+            {/* Content: use padding-left on mobile so it lines up with the timeline */}
+            <div className="w-full sm:w-1/2 sm:pl-8 text-left pl-16 sm:pl-0">
               <h3
                 className="text-xl sm:text-2xl font-semibold text-[#F9A826] flex items-center gap-2"
                 data-aos="fade-left"
@@ -105,16 +109,18 @@ export default function ExperienceEducationPath() {
 
             {/* Node Dot */}
             <div
-              className="
-                absolute 
-                left-6 sm:left-1/2 
-                transform sm:-translate-x-1/2 
-                bg-[#F9A826] 
-                w-5 h-5 sm:w-6 sm:h-6 
-                rounded-full border-4 border-white shadow-lg
-              "
-              data-aos="fade-up"
-            ></div>
+  className="
+    absolute 
+    left-6 sm:left-1/2 
+    sm:-translate-x-1/2 
+    bg-[#F9A826] 
+    w-5 h-5 sm:w-6 sm:h-6 
+    rounded-full border-4 border-white shadow-lg
+    hidden sm:flex
+  "
+  data-aos="fade-up"
+/>
+
           </div>
 
         </div>

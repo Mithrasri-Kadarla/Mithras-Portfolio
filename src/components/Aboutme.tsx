@@ -44,16 +44,20 @@ const AboutMe: React.FC = () => {
         >
           <p className="text-sm sm:text-base md:text-lg text-[#4682A9] leading-relaxed text-justify font-poppins">
 
-            I am <strong>Mithrasri Kadarla</strong>, a passionate software
-            engineer specializing in <strong>React, Next.js, and full-stack web
-            development</strong>. I love building interactive, creative, and
-            visually rich web experiences.
+            Hi, I'm <strong>Mithrasri Kadarla</strong>. I enjoy building clean
+            and responsive user interfaces and working with Python and machine
+            learning to solve practical problems. I like creating things that are
+            simple, useful, and easy to use.
             <br />
             <br />
-            I constantly explore new technologies to level up my development and
-            problem-solving skills. Alongside coding, I also prepare for competitive
-            exams like <strong>GATE</strong> and aim to contribute to impactful
-            software projects while collaborating with inspiring teams.
+            I have experience working with <strong>React</strong>, API integration,
+            and handling real-world features during my internship. I’m someone who
+            learns quickly, pays attention to details, and enjoys improving my
+            skills through hands-on work.
+            <br />
+            <br />
+            Outside of coding, I like exploring new tools, experimenting with small
+            ideas, and continuously learning something new.
           </p>
         </div>
       </div>

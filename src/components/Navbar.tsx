@@ -21,12 +21,40 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex gap-8 text-base font-medium text-[#4682A9]">
-          <Link href="#Aboutme" className="hover:text-[#749BC2] transition">About</Link>
-          <Link href="#skills" className="hover:text-[#749BC2] transition">Skills</Link>
-          <Link href="#projects" className="hover:text-[#749BC2] transition">Projects</Link>
-          <Link href="#contact" className="hover:text-[#749BC2] transition">Contact</Link>
-        </div>
+        <div className="hidden md:flex gap-8 text-lg font-semibold text-[#2F5F6D]">
+  <Link
+    href="#Aboutme"
+    className="relative group transition cursor-pointer"
+  >
+    About
+    <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-[#2F5F6D] group-hover:w-full transition-all duration-300"></span>
+  </Link>
+
+  <Link
+    href="#skills"
+    className="relative group transition cursor-pointer"
+  >
+    Skills
+    <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-[#2F5F6D] group-hover:w-full transition-all duration-300"></span>
+  </Link>
+
+  <Link
+    href="#projects"
+    className="relative group transition cursor-pointer"
+  >
+    Projects
+    <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-[#2F5F6D] group-hover:w-full transition-all duration-300"></span>
+  </Link>
+
+  <Link
+    href="#contact"
+    className="relative group transition cursor-pointer"
+  >
+    Contact
+    <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-[#2F5F6D] group-hover:w-full transition-all duration-300"></span>
+  </Link>
+</div>
+
 
         {/* Mobile Menu Icon */}
         <button className="md:hidden text-[#4682A9]" onClick={() => setOpen(!open)}>

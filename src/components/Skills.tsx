@@ -104,7 +104,8 @@ export default function Skills() {
     }, 5000);
 
     return () => clearInterval(interval);
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); // keep interval behavior same as before
 
   return (
     <section
@@ -117,36 +118,73 @@ export default function Skills() {
         My <span className="text-white">Skills</span>
       </h2>
 
-      <div className="flex flex-col md:flex-row bg-white/20 backdrop-blur-md rounded-3xl shadow-lg overflow-hidden w-full max-w-6xl border border-white/30">
+      {/* CONTAINER - on md+ it's two-column; on mobile it's stacked */}
+      <div className="w-full max-w-6xl">
+        <div className="hidden md:flex bg-white/20 backdrop-blur-md rounded-3xl shadow-lg overflow-hidden border border-white/30">
+          {/* LEFT CATEGORY LIST (desktop/tablet) */}
+          <div className="w-1/3 bg-[#4682A9]/80 p-5 sm:p-8 flex flex-col gap-4 sm:gap-6 text-white">
+            {categoryKeys.map((key) => (
+              <button
+                key={key}
+                onClick={() => setSelectedCategory(key)}
+                className={`w-full text-left text-base sm:text-lg font-semibold py-3 px-4 rounded-xl transition-all ${
+                  selectedCategory === key
+                    ? "bg-white text-[#4682A9] shadow-md"
+                    : "hover:bg-white/20"
+                }`}
+              >
+                {categories[key].title}
+              </button>
+            ))}
+          </div>
 
-        {/* LEFT CATEGORY LIST */}
-        <div className="w-full md:w-1/3 bg-[#4682A9]/80 p-5 sm:p-8 flex flex-col gap-4 sm:gap-6 text-white">
-          {categoryKeys.map((key) => (
-            <button
-              key={key}
-              onClick={() => setSelectedCategory(key)}
-              className={`w-full text-left text-base sm:text-lg font-semibold py-3 px-4 rounded-xl transition-all ${
-                selectedCategory === key
-                  ? "bg-white text-[#4682A9] shadow-md"
-                  : "hover:bg-white/20"
-              }`}
-            >
-              {categories[key].title}
-            </button>
-          ))}
+          {/* RIGHT SKILL CARDS (desktop/tablet) */}
+          <div className="w-2/3 bg-white/10 p-6 sm:p-10 grid grid-cols-2 sm:grid-cols-3 gap-5 sm:gap-8 justify-center">
+            {categories[selectedCategory].items.map((skill, index) => (
+              <div
+                key={index}
+                className="flex flex-col items-center bg-white/20 rounded-2xl p-4 sm:p-6 h-28 sm:h-32 hover:scale-105 transition-transform border border-white/30"
+              >
+                <div className="text-3xl sm:text-5xl mb-2">{skill.icon}</div>
+                <p className="text-xs sm:text-sm font-semibold text-[#1F3C88]">
+                  {skill.name}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
 
-        {/* RIGHT SKILL CARDS */}
-        <div className="w-full md:w-2/3 bg-white/10 p-6 sm:p-10 grid grid-cols-2 sm:grid-cols-3 gap-5 sm:gap-8 justify-center">
-          {categories[selectedCategory].items.map((skill, index) => (
-            <div
-              key={index}
-              className="flex flex-col items-center bg-white/20 rounded-2xl p-4 sm:p-6 h-28 sm:h-32 hover:scale-105 transition-transform border border-white/30"
+        {/* MOBILE LAYOUT */}
+        <div className="md:hidden bg-white/20 backdrop-blur-md rounded-3xl shadow-lg overflow-hidden border border-white/30">
+          {/* Dropdown acting as the left category selector on mobile */}
+          <div className="p-4 bg-[#4682A9]/80">
+            <label htmlFor="mobile-category-select" className="sr-only">Select category</label>
+            <select
+              id="mobile-category-select"
+              value={selectedCategory}
+              onChange={(e) => setSelectedCategory(e.target.value as CategoryKey)}
+              className="w-full p-3 rounded-xl text-[#4682A9] font-semibold bg-white shadow-md border border-white/40"
             >
-              <div className="text-3xl sm:text-5xl mb-2">{skill.icon}</div>
-              <p className="text-xs sm:text-sm font-semibold text-[#1F3C88]">{skill.name}</p>
-            </div>
-          ))}
+              {categoryKeys.map((key) => (
+                <option key={key} value={key}>
+                  {categories[key].title}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* SKILLS FOR SELECTED CATEGORY (mobile) */}
+          <div className="p-4 sm:p-6 grid grid-cols-2 gap-4">
+            {categories[selectedCategory].items.map((skill, index) => (
+              <div
+                key={index}
+                className="flex flex-col items-center bg-white/20 rounded-2xl p-3 h-24 hover:scale-105 transition-transform border border-white/30"
+              >
+                <div className="text-2xl mb-1">{skill.icon}</div>
+                <p className="text-xs font-semibold text-[#1F3C88]">{skill.name}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
